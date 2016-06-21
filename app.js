@@ -34,7 +34,7 @@ app.get('/:filename', function(req, res) {
 		if (err) {
 			// res.send("File Does Not Exist");
 			console.log("File Does not Exist: ./public", fileContents);
-			res.redirect('/');
+			res.redirect('no-file-error.html');
 			// throw err;
 		} 
 		else {
