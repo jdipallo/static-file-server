@@ -31,9 +31,16 @@ app.get('/:filename', function(req, res) {
 	fileContents = req.params.filename;	
 
 	fs.readFile("./public/" + fileContents, function(err, data) {
-		if (err) throw err;
-		res.header('Content-Type', 'text/html');
-	  	res.send(data);
+		if (err) {
+			// res.send("File Does Not Exist");
+			console.log("File Does not Exist: ./public", fileContents);
+			res.redirect('/');
+			// throw err;
+		} 
+		else {
+			res.header('Content-Type', 'text/html');
+		  	res.send(data);
+	  	}
 	});
 });
 
